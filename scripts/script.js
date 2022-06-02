@@ -77,9 +77,16 @@ $(document).ready(function(){
             show_todos();
             show_done();
         });
+
+        $(".fa-trash").click(function(){
+            let id = $(this).parent().parent().attr("id");
+            delete todos[id];
+            show_todos();
+        });
     }
 
     function show_done(){
+        $("#done").html("");
         for(id in todos)
             if(todos[id]["is_done"])
                 create_done_html(todos[id]["title"], todos[id]["desc"]); 
