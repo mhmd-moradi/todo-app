@@ -53,7 +53,9 @@ $(document).ready(function(){
                 }
     }
 
-  
-
+    function create_todo_html(id, title, description, priority){
+        var todo_html = $($.parseHTML('<div id="'+id+'" class="todo"><div class="todo-title">Title: '+title+'</div><div class="todo-description">Description: '+description+'</div><div class="todo-priority">Priority: '+priority+'</div><div class="icons"><i class="fa fa-edit fa-2x"></i><i class="fa fa-trash fa-2x"></i><i class="fa fa-check fa-2x"></i></div></div>'));
+        $("#current-todos").append(todo_html);
+    }
 
 });
