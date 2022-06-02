@@ -40,5 +40,20 @@ $(document).ready(function(){
                     order.push(id);
     }
 
+    function sort_by_priority(){
+        order = [];
+        let temp = {};
+        for(id in todos)
+            temp[id] = todos[id];
+        for(let i=5; i > 0; i--)
+            for(id in temp)
+                if(temp[id]["priority"] == i){
+                    order.push(id);
+                    delete temp[id];
+                }
+    }
+
+  
+
 
 });
