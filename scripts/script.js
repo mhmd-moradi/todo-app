@@ -17,14 +17,12 @@ $(document).ready(function(){
 
     function create_todo(id, title, desc, priority){
         let info = [];
-        info["id"] = id;
         info["title"] = title;
         info["desc"] = desc;
         info["priority"] = priority;
-        console.log(info);
+        todos[id] = info;
     }
 
-    
 
 
 });
