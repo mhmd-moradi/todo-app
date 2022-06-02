@@ -15,6 +15,21 @@ $(document).ready(function(){
         return true;
     }
 
-    
+    function create_todo(id, title, desc, priority){
+        let info = [];
+        info["id"] = id;
+        info["title"] = title;
+        info["desc"] = desc;
+        info["priority"] = priority;
+        console.log(info);
+    }
+
+    $("#add-btn").click(function(){
+        if(check_fields()){
+            create_todo(generate_id(), $("#title").val(), $("#description").val(), $( "#priority option:selected" ).val());
+        }else
+            alert("Please Fill All Fields");
+    });
+
 
 });
