@@ -1,5 +1,7 @@
 $(document).ready(function(){
-    var todos = {};
+    const todos = {};
+    var order = [];
+
 
     function generate_id(){
         let id = Math.floor(Math.random() * 9999);
@@ -26,16 +28,17 @@ $(document).ready(function(){
     }
 
     function sort_by_date(){
+        order = [];
         let dates = [];
         for(id in todos)
             dates.push(todos[id]["created_at"]);
-
         dates.sort();
         dates.reverse();
-        console.log(dates);
+        for(let i = 0; i < dates.length; i++)
+            for(id in todos)
+                if(todos[id]["created_at"].getTime() == dates[i].getTime())
+                    order.push(id);
     }
-
-   
 
 
 });
