@@ -54,7 +54,7 @@ $(document).ready(function(){
     }
 
     function create_todo_html(id, title, description, priority){
-        var todo_html = $($.parseHTML('<div id="'+id+'" class="todo"><div class="todo-title">Title: '+title+'</div><div class="todo-description">Description: '+description+'</div><div class="todo-priority">Priority: '+priority+'</div><div class="icons"><i class="fa fa-edit fa-2x"></i><i class="fa fa-trash fa-2x"></i><i class="fa fa-check fa-2x"></i></div></div>'));
+        let todo_html = $($.parseHTML('<div id="'+id+'" class="todo"><div class="todo-title">Title: '+title+'</div><div class="todo-description">Description: '+description+'</div><div class="todo-priority">Priority: '+priority+'</div><div class="icons"><i class="fa fa-edit fa-2x"></i><i class="fa fa-trash fa-2x"></i><i class="fa fa-check fa-2x"></i></div></div>'));
         $("#current-todos").append(todo_html);
     }
 
@@ -69,6 +69,17 @@ $(document).ready(function(){
             console.log(id);
             create_todo_html(id, todos[id]["title"], todos[id]["desc"], todos[id]["priority"]);
         }
+    }
+
+    function show_done(){
+        for(id in todos)
+            if(todos[id]["is_done"])
+                create_done_html(todos[id]["title"], todos[id]["desc"]); 
+    }
+
+    function create_done_html(title, description){
+        let todo_html = $($.parseHTML('<div class="todo"><div class="todo-title">Title: '+title+'</div><div class="todo-description">Description: '+description+'</div></div>'));
+        $("#done").append(todo_html);
     }
 
     function search(){
