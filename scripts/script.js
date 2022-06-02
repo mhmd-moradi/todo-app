@@ -24,12 +24,7 @@ $(document).ready(function(){
         console.log(info);
     }
 
-    $("#add-btn").click(function(){
-        if(check_fields()){
-            create_todo(generate_id(), $("#title").val(), $("#description").val(), $( "#priority option:selected" ).val());
-        }else
-            alert("Please Fill All Fields");
-    });
+    
 
 
 });
