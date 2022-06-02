@@ -67,8 +67,16 @@ $(document).ready(function(){
         for(let i=0; i<order.length; i++){
             let id = order[i];
             console.log(id);
-            create_todo_html(id, todos[id]["title"], todos[id]["desc"], todos[id]["priority"]);
+            if(!todos[id]["is_done"])
+                create_todo_html(id, todos[id]["title"], todos[id]["desc"], todos[id]["priority"]);
         }
+
+        $(".fa-check").click(function(){
+            let id = $(this).parent().parent().attr("id");
+            todos[id]["is_done"] = true;
+            show_todos();
+            show_done();
+        });
     }
 
     function show_done(){
