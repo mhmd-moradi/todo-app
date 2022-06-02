@@ -71,6 +71,25 @@ $(document).ready(function(){
         }
     }
 
+    function search(){
+        $("#current-todos").html("");
+        order = [];
+        let temp = {};
+        for(id in todos)
+            temp[id] = todos[id];
+        for(id in temp)
+            if(temp[id]["title"].search($("#search").val()) != -1 || temp[id]["desc"].search($("#search").val()) != -1){
+                console.log(temp[id]["title"].search($("#search").val()), temp[id]["desc"].search($("#search").val()));
+                order.push(id);
+                delete temp[id];
+            }
+        for(let i=0; i<order.length; i++){
+            let id = order[i];
+            console.log(id);
+            create_todo_html(id, todos[id]["title"], todos[id]["desc"], todos[id]["priority"]);
+        }
+    }
+
     $("#add-btn").click(function(){
         if(check_fields()){
             create_todo(generate_id(), $("#title").val(), $("#description").val(), $( "#priority option:selected" ).val(), new Date($.now()));
@@ -81,6 +100,10 @@ $(document).ready(function(){
 
     $("#filter").change(function() {
        show_todos();
+    });
+
+    $("#search").keyup(function() {
+        search();
     });
 
 });
