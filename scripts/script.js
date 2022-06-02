@@ -58,4 +58,19 @@ $(document).ready(function(){
         $("#current-todos").append(todo_html);
     }
 
+    function show_todos(){
+        $("#current-todos").html("");
+        if($( "#filter option:selected" ).val() == "time")
+            sort_by_date();
+        else
+            sort_by_priority();
+        for(let i=0; i<order.length; i++){
+            let id = order[i];
+            console.log(id);
+            create_todo_html(id, todos[id]["title"], todos[id]["desc"], todos[id]["priority"]);
+        }
+    }
+
+
+
 });
