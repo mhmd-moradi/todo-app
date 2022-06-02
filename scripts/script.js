@@ -79,5 +79,8 @@ $(document).ready(function(){
             alert("Please Fill All Fields");
     });
 
+    $("#filter").change(function() {
+       show_todos();
+    });
 
 });
