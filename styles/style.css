@@ -32,12 +32,12 @@ body{
     width: 120px;
 }
 
-#add-todo input, #add-todo textarea,#add-todo select{
-    width: 50%;
+input, textarea, select{
+    width: 80%;
 } 
 
-#add-todo input, #add-todo select{
-    width: 50%;
+input, select{
+    width: 80%;
     height: 40px;
     border-radius: 10px;
     border: none;
@@ -51,5 +51,27 @@ body{
     background-color: #fff;
     cursor: pointer;
     font-size: 14px;
-    margin: 0 30%;
+    margin: 0 auto;
+}
+
+.todos h1{
+    width: 80%;
+    text-align: center;
+    margin-left: 120px;
+    margin-top: 30px;
+}
+
+.todo{
+    border: 3px solid #000;
+    margin-left: 120px;
+    width: 80%;
+    border-radius: 10px;
+    padding: 15px;
+    margin-top: 30px;
+    font-size: 24px;
+}
+
+i{
+    color: #000;
+    font-size: 58px;
 }
