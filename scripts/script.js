@@ -1,6 +1,7 @@
 $(document).ready(function(){
     const todos = {};
     var order = [];
+    var edit = -1;
 
 
     function generate_id(){
@@ -82,6 +83,14 @@ $(document).ready(function(){
             let id = $(this).parent().parent().attr("id");
             delete todos[id];
             show_todos();
+        });
+
+        $(".fa-edit").click(function(){
+            let id = $(this).parent().parent().attr("id");
+            edit = id;
+            $("#title").val(todos[id]["title"]);
+            $("#description").val(todos[id]["desc"]);
+            $("#add-btn").html("Update Todo");
         });
     }
 
