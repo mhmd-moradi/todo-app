@@ -71,6 +71,13 @@ $(document).ready(function(){
         }
     }
 
+    $("#add-btn").click(function(){
+        if(check_fields()){
+            create_todo(generate_id(), $("#title").val(), $("#description").val(), $( "#priority option:selected" ).val(), new Date($.now()));
+            show_todos();
+        }else
+            alert("Please Fill All Fields");
+    });
 
 
 });
