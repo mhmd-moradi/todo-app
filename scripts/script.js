@@ -9,5 +9,12 @@ $(document).ready(function(){
         return id;
     }
 
-    console.log(generate_id());
+    function check_fields(){
+        if($("#title").val() == "" || $("#description").val() == "")
+            return false;
+        return true;
+    }
+
+    
+
 });
