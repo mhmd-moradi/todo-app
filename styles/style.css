@@ -76,3 +76,7 @@ i{
     color: #000;
     font-size: 58px;
 }
+
+#done .todo{
+    background-color: gray;
+}
