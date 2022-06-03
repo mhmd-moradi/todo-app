@@ -127,8 +127,15 @@ $(document).ready(function(){
 
     $("#add-btn").click(function(){
         if(check_fields()){
-            create_todo(generate_id(), $("#title").val(), $("#description").val(), $( "#priority option:selected" ).val(), new Date($.now()));
-            show_todos();
+            if(edit == -1)
+                create_todo(generate_id(), $("#title").val(), $("#description").val(), $( "#priority option:selected" ).val(), new Date($.now()));
+            else{
+                todos[edit]["title"] = $("#title").val();   
+                todos[edit]["desc"] = $("#description").val(); 
+                edit = -1;
+                $("#add-btn").html("Add Todo");
+            }
+            show_todos(); 
         }else
             alert("Please Fill All Fields");
     });
