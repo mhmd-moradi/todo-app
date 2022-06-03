@@ -80,7 +80,10 @@ $(document).ready(function(){
             if(!todos[id]["is_done"])
                 create_todo_html(id, todos[id]["title"], todos[id]["desc"], todos[id]["priority"]);
         }
+        icons_action();
+    }
 
+    function icons_action(){
         $(".fa-check").click(function(){
             let id = $(this).parent().parent().attr("id");
             todos[id]["is_done"] = true;
@@ -134,6 +137,7 @@ $(document).ready(function(){
             console.log(id);
             create_todo_html(id, todos[id]["title"], todos[id]["desc"], todos[id]["priority"]);
         }
+        icons_action();
     }
 
     $("#add-btn").click(function(){
@@ -143,6 +147,7 @@ $(document).ready(function(){
             else{
                 todos[edit]["title"] = $("#title").val();   
                 todos[edit]["desc"] = $("#description").val(); 
+                todos[edit]["priority"] = $("#priority option:selected" ).val(); 
                 edit = -1;
                 $("#add-btn").html("Add Todo");
             }
