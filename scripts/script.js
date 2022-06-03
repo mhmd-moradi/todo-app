@@ -1,8 +1,16 @@
 $(document).ready(function(){
+
+    let history = JSON.parse(localStorage.getItem("history"));
     const todos = {};
     var order = [];
     var edit = -1;
 
+    function restore_todos(){
+        for (h in history){
+            todos[h] = history[h];   
+            todos[h]["created_at"] = new Date(todos[h]["created_at"]);    
+        }
+    }
 
     function generate_id(){
         let id = Math.floor(Math.random() * 9999);
@@ -19,13 +27,14 @@ $(document).ready(function(){
     }
 
     function create_todo(id, title, desc, priority, time){
-        let info = [];
+        let info = {};
         info["title"] = title;
         info["desc"] = desc;
         info["priority"] = priority;
         info["is_done"] = false;
         info["created_at"] = time;
         todos[id] = info;
+        localStorage.setItem("history", JSON.stringify(todos));
     }
 
     function sort_by_date(){
@@ -75,6 +84,7 @@ $(document).ready(function(){
         $(".fa-check").click(function(){
             let id = $(this).parent().parent().attr("id");
             todos[id]["is_done"] = true;
+            localStorage.setItem("history", JSON.stringify(todos));
             show_todos();
             show_done();
         });
@@ -82,6 +92,7 @@ $(document).ready(function(){
         $(".fa-trash").click(function(){
             let id = $(this).parent().parent().attr("id");
             delete todos[id];
+            localStorage.setItem("history", JSON.stringify(todos));
             show_todos();
         });
 
@@ -147,5 +158,9 @@ $(document).ready(function(){
     $("#search").keyup(function() {
         search();
     });
+
+    restore_todos();
+    show_todos();
+    show_done();
 
 });
